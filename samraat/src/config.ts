@@ -8,7 +8,8 @@ export const config = {
     social: {
         github: "https://github.com/Samraatsharma",
         email: "worksamraat@gmail.com",
-        location: "India"
+        location: "India",
+        twitter: ""
     },
     about: {
         title: "About Me",
@@ -128,7 +129,8 @@ export const config = {
     email: "worksamraat@gmail.com",
     github: "https://github.com/Samraatsharma",
     linkedin: "https://www.linkedin.com/in/samraatsharma/",
-    instagram: "https://www.instagram.com/mr_samraat_/"
+    instagram: "https://www.instagram.com/mr_samraat_/",
+    twitter: ""
 },
     skills: {
         develop: {
