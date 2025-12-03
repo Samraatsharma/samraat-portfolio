@@ -6,11 +6,14 @@ export const config = {
         description: "I’m a Java developer who focuses on writing logical, clean, and structured code. I enjoy backend logic, problem-solving, and improving my skills every day."
     },
     social: {
-        github: "https://github.com/Samraatsharma",
-        email: "worksamraat@gmail.com",
-        location: "India",
-        twitter: ""
-    },
+    github: "https://github.com/Samraatsharma",
+    email: "worksamraat@gmail.com",
+    location: "India",
+    instagram: "https://www.instagram.com/mr_samraat_/",
+    linkedin: "https://www.linkedin.com/in/samraatsharma/",
+    twitter: "" // ← MOST IMPORTANT
+},
+
     about: {
         title: "About Me",
         description: "I’m a Software Engineer  who  enjoys understanding , why things work—not just making them work.Working with: Java, C++, C, DSA, OOP"
@@ -125,13 +128,14 @@ export const config = {
         image: "/images/project-3.webp"
     }
 ],
-    contact: {
+  contact: {
     email: "worksamraat@gmail.com",
     github: "https://github.com/Samraatsharma",
     linkedin: "https://www.linkedin.com/in/samraatsharma/",
     instagram: "https://www.instagram.com/mr_samraat_/",
-    twitter: ""
+    twitter: "" // ← IMPORTANT
 },
+
     skills: {
         develop: {
     title: "Java Development",
