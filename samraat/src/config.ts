@@ -1,3 +1,19 @@
+export interface ContactInfo {
+  email: string;
+  github: string;
+  linkedin: string;
+  instagram: string;
+  twitter: string; // REQUIRED
+}
+
+export interface SocialInfo {
+  github: string;
+  email: string;
+  location: string;
+  instagram: string;
+  linkedin: string;
+  twitter: string; // REQUIRED
+}
 export const config = {
     developer: {
         name: "Samraat",
@@ -6,13 +22,14 @@ export const config = {
         description: "I’m a Java developer who focuses on writing logical, clean, and structured code. I enjoy backend logic, problem-solving, and improving my skills every day."
     },
     social: {
-    github: "https://github.com/Samraatsharma",
-    email: "worksamraat@gmail.com",
-    location: "India",
-    instagram: "https://www.instagram.com/mr_samraat_/",
-    linkedin: "https://www.linkedin.com/in/samraatsharma/",
-    twitter: "" // ← MOST IMPORTANT
-},
+  github: "https://github.com/Samraatsharma",
+  email: "worksamraat@gmail.com",
+  location: "India",
+  instagram: "https://www.instagram.com/mr_samraat_/",
+  linkedin: "https://www.linkedin.com/in/samraatsharma/",
+  twitter: "",
+} as SocialInfo,
+
 
     about: {
         title: "About Me",
@@ -129,12 +146,13 @@ export const config = {
     }
 ],
   contact: {
-    email: "worksamraat@gmail.com",
-    github: "https://github.com/Samraatsharma",
-    linkedin: "https://www.linkedin.com/in/samraatsharma/",
-    instagram: "https://www.instagram.com/mr_samraat_/",
-    twitter: "" // ← IMPORTANT
-},
+   email: "worksamraat@gmail.com",
+   github: "https://github.com/Samraatsharma",
+   linkedin: "https://www.linkedin.com/in/samraatsharma/",
+   instagram: "https://www.instagram.com/mr_samraat_/",
+   twitter: "",
+} as ContactInfo,
+
 
     skills: {
         develop: {
