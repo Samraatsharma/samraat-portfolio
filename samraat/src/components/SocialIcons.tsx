@@ -10,7 +10,18 @@ import { useEffect } from "react";
 import HoverLinks from "./HoverLinks";
 import { config } from "../config";
 
+// 🔥 Explicit type added
+type ContactInfo = {
+  email: string;
+  github: string;
+  linkedin: string;
+  instagram: string;
+  twitter: string;
+};
+
 const SocialIcons = () => {
+  const contact = config.contact as unknown as ContactInfo;
+
   useEffect(() => {
     const social = document.getElementById("social") as HTMLElement;
 
@@ -48,12 +59,9 @@ const SocialIcons = () => {
       };
 
       document.addEventListener("mousemove", onMouseMove);
-
       updatePosition();
 
-      return () => {
-        elem.removeEventListener("mousemove", onMouseMove);
-      };
+      return () => elem.removeEventListener("mousemove", onMouseMove);
     });
   }, []);
 
@@ -61,27 +69,30 @@ const SocialIcons = () => {
     <div className="icons-section">
       <div className="social-icons" data-cursor="icons" id="social">
         <span>
-          <a href={config.contact.github} target="_blank">
+          <a href={contact.github} target="_blank">
             <FaGithub />
           </a>
         </span>
+
         <span>
-          <a href={config.contact.linkedin} target="_blank">
+          <a href={contact.linkedin} target="_blank">
             <FaLinkedinIn />
           </a>
         </span>
+
         <span>
-          <a href={config.contact.twitter} target="_blank">
+          <a href={contact.twitter} target="_blank">
             <FaXTwitter />
           </a>
         </span>
-        <span>
-          <a href={config.contact.instagram} target="_blank">
 
+        <span>
+          <a href={contact.instagram} target="_blank">
             <FaInstagram />
           </a>
         </span>
       </div>
+
       <a className="resume-button" href="#">
         <HoverLinks text="RESUME" />
         <span>

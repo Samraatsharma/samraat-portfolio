@@ -7,7 +7,18 @@ import { useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// 🔥 Explicit type to fix Vercel error
+type ContactInfo = {
+  email: string;
+  github: string;
+  linkedin: string;
+  instagram: string;
+  twitter: string;
+};
+
 const Contact = () => {
+  const contact = config.contact as unknown as ContactInfo;
+
   useEffect(() => {
     const contactTimeline = gsap.timeline({
       scrollTrigger: {
@@ -18,28 +29,15 @@ const Contact = () => {
       },
     });
 
-    // Animate title from bottom
     contactTimeline.fromTo(
       ".contact-section h3",
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      }
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
     );
 
-    // Animate contact boxes with stagger from bottom
     contactTimeline.fromTo(
       ".contact-box",
-      {
-        opacity: 0,
-        y: 50,
-      },
+      { opacity: 0, y: 50 },
       {
         opacity: 1,
         y: 0,
@@ -50,10 +48,7 @@ const Contact = () => {
       "-=0.4"
     );
 
-    // Clean up
-    return () => {
-      contactTimeline.kill();
-    };
+    return () => contactTimeline.kill();
   }, []);
 
   return (
@@ -64,8 +59,8 @@ const Contact = () => {
           <div className="contact-box">
             <h4>Email</h4>
             <p>
-              <a href={`mailto:${config.contact.email}`} data-cursor="disable">
-                {config.contact.email}
+              <a href={`mailto:${contact.email}`} data-cursor="disable">
+                {contact.email}
               </a>
             </p>
             <h4>Location</h4>
@@ -73,10 +68,12 @@ const Contact = () => {
               <span>{config.social.location}</span>
             </p>
           </div>
+
           <div className="contact-box">
             <h4>Social</h4>
+
             <a
-              href={config.contact.github}
+              href={contact.github}
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="disable"
@@ -84,8 +81,9 @@ const Contact = () => {
             >
               Github <MdArrowOutward />
             </a>
+
             <a
-              href={config.contact.linkedin}
+              href={contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="disable"
@@ -93,8 +91,9 @@ const Contact = () => {
             >
               Linkedin <MdArrowOutward />
             </a>
+
             <a
-              href={config.contact.twitter}
+              href={contact.twitter}
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="disable"
@@ -102,8 +101,9 @@ const Contact = () => {
             >
               Twitter <MdArrowOutward />
             </a>
+
             <a
-              href={config.contact.instagram}
+              href={contact.instagram}
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="disable"
@@ -112,9 +112,11 @@ const Contact = () => {
               Instagram <MdArrowOutward />
             </a>
           </div>
+
           <div className="contact-box">
             <h2>
-              Designed and Developed <br /> by <span>{config.developer.fullName}</span>
+              Designed and Developed <br /> by{" "}
+              <span>{config.developer.fullName}</span>
             </h2>
             <h5>
               <MdCopyright /> {new Date().getFullYear()}
