@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// 🔥 Explicit type to fix Vercel error
+// 🔥 Explicit type to fix TS2339 errors
 type ContactInfo = {
   email: string;
   github: string;
@@ -17,6 +17,7 @@ type ContactInfo = {
 };
 
 const Contact = () => {
+  // Force TypeScript to use our corrected type
   const contact = config.contact as unknown as ContactInfo;
 
   useEffect(() => {
@@ -48,14 +49,19 @@ const Contact = () => {
       "-=0.4"
     );
 
-    return () => contactTimeline.kill();
+    // ✔ FIX: Return only a cleanup function (React requirement)
+    return () => {
+      contactTimeline.kill();
+    };
   }, []);
 
   return (
     <div className="contact-section section-container" id="contact">
       <div className="contact-container">
         <h3>{config.developer.fullName}</h3>
+
         <div className="contact-flex">
+
           <div className="contact-box">
             <h4>Email</h4>
             <p>
@@ -63,6 +69,7 @@ const Contact = () => {
                 {contact.email}
               </a>
             </p>
+
             <h4>Location</h4>
             <p>
               <span>{config.social.location}</span>
@@ -118,10 +125,12 @@ const Contact = () => {
               Designed and Developed <br /> by{" "}
               <span>{config.developer.fullName}</span>
             </h2>
+
             <h5>
               <MdCopyright /> {new Date().getFullYear()}
             </h5>
           </div>
+
         </div>
       </div>
     </div>
